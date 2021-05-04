@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <!-- https://github.com/elbobo/aframe-multisrc-component -->
+    <script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
+
+    <script>
+      const windowLoad = (event) => {
+      };
+
+      window.onload = windowLoad;
+    </script>
+  </head>
+  <body>
+<!--    <a-scene fog stats>-->
+    <a-scene fog>
+
+      <a-assets>
+        <img id="marek"     src="img/marek.png">
+        <img id="right"     src="img/right.jpg">
+        <img id="left"      src="img/left.jpg">
+        <img id="top"       src="img/top.jpg">
+        <img id="bottom"    src="img/bottom.jpg">
+        <img id="front"     src="img/front.jpg">
+        <img id="rear"      src="img/rear.jpg">
+        <img id="wolf-pack" src="img/wolf-pack.jpg">
+      </a-assets>
+
+      <a-entity
+          id="box"
+          geometry="primitive: box; width: 2; height: 2; depth: 2"
+          position="0 2 -4"
+          multisrc="srcs:#right,#left,#top,#bottom,#front,#rear"
+          material="transparent: true"
+          opacity="1"
+          animation__scale="property: scale; from: 0 0 0; to: 1 1 1; dur: 3000"
+          animation__rotation="property: rotation; from: 0 0 0; to: 360 360 0; dur: 10000; easing: linear; loop:true; delay: 3000"
+          >
+
+<!--          <a-animation attribute="scale" begin="2000" to="2 2 2"></a-animation>-->
+          <a-animation attribute="rotation" from="0 0 0" to="360 360 0" dur="10000"></a-animation>
+<!--          <a-animation animation="property: rotation; from: 0 0 0; to: 360 360 0; dur: 10000; easing: linear; loop:true"></a-animation>-->
+      </a-entity>
+<!--        property: rotation; from: 0 0 0; to: 360 360 0; dur: 10000; easing: linear; loop:true"-->
+     <a-entity
+          geometry="primitive: sphere; radius: .001"
+          position="0 2 -4"
+          rotation="0 0 70"
+          animation__scale="property: scale; from: 0 0 0; to: 1 1 1; dur: 3000"
+          animation__rotation="property: rotation; to: 0 -360 70; loop: true; dur: 5000; easing: linear; delay: 3000"
+          material="transparent: true"
+          opacity="0">
+
+        <a-entity
+          id="sphere"
+          geometry="primitive: sphere; radius: .4;"
+          material="color: white; src: #marek;"
+          rotation="95 0 270"
+          position="0 0 -2"
+          material="transparent: true">
+        </a-entity>
+
+      </a-entity>
+
+      <!-- <a-light type="directional" color="white" position="1 -.5 0" intensity=".8"></a-light> -->
+      <!-- <a-light type="directional" color="white" position="1 -.5 0" intensity=".8"></a-light> -->
+
+      <a-light type="directional" color="#ffffff" intensity="0.01" position="-1 1 2"></a-light>
+      <a-light type="ambient" color="#ffffff"></a-light>
+
+<!--      <a-entity environment="preset: contact; dressingAmount: 300; lighting: none"></a-entity>-->
+        <a-entity environment="preset: forest; groundColor: #327880; groundColor2: #657880; groundTexture: checkerboard; horizonColor: silver; skyColor: skyblue; dressingColor: #266359; shadow: true"></a-entity>
+    </a-scene>
+  </body>
+</html>

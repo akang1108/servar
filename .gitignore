@@ -1,0 +1,19 @@
+# Application specific
+*data*.json
+build_deploy.sh
+bucket-name.txt
+
+# General
+.project
+.idea
+.gradle
+
+out/
+build/
+logs/
+node_modules/
+
+*.iml
+*.zip
+*adminsdk*.json
+
